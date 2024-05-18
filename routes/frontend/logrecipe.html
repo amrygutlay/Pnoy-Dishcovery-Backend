@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name=lo"viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pnoy Dishcovery - Recipes</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="recipeform.css">
+    <style>
+ 
+    </style>
+</head>
+<body>
+    <div class="banner">
+        <div class="navbar">
+            <img src="pics/logo.png" class="logo" alt="Pnoy Dishcovery Logo">
+            <form class="search-bar" onsubmit="searchRecipe(event)">
+                <input type="text" id="searchQuery" name="search_query" placeholder="Search...">
+                <button type="submit">
+                    <ion-icon name="search-outline"></ion-icon>
+                </button>
+            </form>
+            <ul>
+                <li><a href="loghome.html">Home</a></li>
+                <li><a href="logrecipe.html">Recipes</a></li>
+                <li><a href="logabout.html">About</a></li>
+                <li><a href="index.html">Log Out</a></li>
+            </ul>
+            <!-- Add Recipe Button -->
+            <button class="add-recipe-button" onclick="showAddRecipeForm()">Add Recipe</button>
+        </div>
+    </div>
+
+    <!-- Add your recipe container here -->
+    <div class="recipes-container" id="recipesContainer">
+<!-- Recipe card for Sinigang -->
+<div class="recipe-card" onclick="showRecipeDetails('Sinigang')">
+  <img src="pics/sinigang.jpg" alt="Sinigang" />
+  <h2 class="recipe-title">Sinigang</h2>
+  <p class="recipe-description">A sour Filipino soup typically associated with tamarind. It is often cooked with pork, beef, shrimp, or fish.</p>
+  <p class="recipe-category">Category: Pork</p>
+</div>
+
+<!-- Recipe card for Adobo -->
+<div class="recipe-card" onclick="showRecipeDetails('Adobo')">
+  <img src="pics/adobo.jpg" alt="Adobo" />
+  <h2 class="recipe-title">Adobo</h2>
+  <p class="recipe-description">A Filipino chicken dish marinated in soy sauce, vinegar, and garlic, and then browned in oil, simmered until tender, and served with the reduced marinade.</p>
+  <p class="recipe-category">Category: Chicken</p>
+</div>
+
+<!-- Recipe card for Kare-Kare -->
+<div class="recipe-card" onclick="showRecipeDetails('Kare-Kare')">
+  <img src="pics/karekare.jpg" alt="Kare-Kare" />
+  <h2 class="recipe-title">Kare-Kare</h2>
+  <p class="recipe-description">A Filipino stew characterized by its rich peanut sauce. It is typically made with oxtail, tripe, and vegetables such as eggplant, banana flower, and string beans.</p>
+  <p class="recipe-category">Category: Beef/Vegetable</p>
+</div>
+
+<!-- Recipe card for Lumpiang Shanghai -->
+<div class="recipe-card" onclick="showRecipeDetails('Lumpiang Shanghai')">
+  <img src="pics/lumpia.jpg" alt="Lumpia" />
+  <h2 class="recipe-title">Lumpiang Shanghai</h2>
+  <p class="recipe-description">Filipino-style spring rolls filled with ground pork, minced onions, carrots, and spices, wrapped in thin spring roll wrappers and deep-fried until crispy.</p>
+  <p class="recipe-category">Category: Pork</p>
+</div>
+
+<!-- Recipe card for Leche Flan -->
+<div class="recipe-card" onclick="showRecipeDetails('Leche Flan')">
+  <img src="pics/leche_flan.jpg" alt="Leche Flan" />
+  <h2 class="recipe-title">Leche Flan</h2>
+  <p class="recipe-description">Leche Flan is a traditional Filipino dessert made with eggs, condensed milk, and caramelized sugar. It's known for its smooth texture and rich flavor.</p>
+  <p class="recipe-category">Category: Dessert</p>
+</div>
+
+<!-- Recipe card for Halo-Halo -->
+<div class="recipe-card" onclick="showRecipeDetails('Halo-Halo')">
+  <img src="pics/halo_halo.jpg" alt="Halo-Halo" />
+  <h2 class="recipe-title">Halo-Halo</h2>
+  <p class="recipe-description">Halo-Halo is a popular Filipino dessert that consists of a mixture of shaved ice and various sweet ingredients like beans, fruits, and gelatin, topped with evaporated milk and ice cream.</p>
+  <p class="recipe-category">Category: Dessert</p>
+</div>
+
+<!-- Recipe card for Biko -->
+<div class="recipe-card" onclick="showRecipeDetails('Biko')">
+  <img src="pics/biko.jpg" alt="Biko" />
+  <h2 class="recipe-title">Biko</h2>
+  <p class="recipe-description">Biko is a Filipino rice cake made from glutinous rice, coconut milk, and brown sugar. It's often served during special occasions and celebrations.</p>
+  <p class="recipe-category">Category: Dessert</p>
+</div>
+
+<!-- Recipe card for Buko Salad -->
+<div class="recipe-card" onclick="showRecipeDetails('Buko Salad')">
+  <img src="pics/buko_salad.jpg" alt="Buko Salad" />
+  <h2 class="recipe-title">Buko Salad</h2>
+  <p class="recipe-description">Buko Salad is a Filipino fruit salad made with young coconut, mixed fruits, cream, and condensed milk. It's a refreshing and sweet dessert commonly served during gatherings.</p>
+  <p class="recipe-category">Category: Dessert</p>
+</div>
+
+<!-- Recipe card for Pinakbet -->
+<div class="recipe-card" onclick="showRecipeDetails('Pinakbet')">
+  <img src="pics/pinakbet.jpg" alt="Pinakbet" />
+  <h2 class="recipe-title">Pinakbet</h2>
+  <p class="recipe-description">Pinakbet is a Filipino vegetable dish made from mixed vegetables such as squash, eggplant, okra, string beans, and bitter melon, sautéed in shrimp paste or fermented fish sauce.</p>
+  <p class="recipe-category">Category: Vegetable</p>
+</div>
+
+<!-- Recipe card for Sisig -->
+<div class="recipe-card" onclick="showRecipeDetails('Sisig')">
+  <img src="pics/sisig.jpg" alt="Sisig" />
+  <h2 class="recipe-title">Sisig</h2>
+  <p class="recipe-description">Sisig is a Filipino dish made from parts of pig's head and liver, seasoned with calamansi juice, onions, and chili peppers. It's often served on a sizzling plate and garnished with raw egg.</p>
+  <p class="recipe-category">Category: Pork</p>
+</div>
+
+<!-- Recipe card for Kutsinta -->
+<div class="recipe-card" onclick="showRecipeDetails('Kutsinta')">
+  <img src="pics/kutsinta.jpg" alt="Kutsinta" />
+  <h2 class="recipe-title">Kutsinta</h2>
+  <p class="recipe-description">Kutsinta is a Filipino steamed rice cake made from rice flour, brown sugar, and lye water. It has a jelly-like texture and is usually served with grated coconut.</p>
+  <p class="recipe-category">Category: Dessert</p>
+</div>
+
+<!-- Recipe card for Cassava Cake -->
+<div class="recipe-card" onclick="showRecipeDetails('Cassava Cake')">
+  <img src="pics/cassava_cake.jpg" alt="Cassava Cake" />
+  <h2 class="recipe-title">Cassava Cake</h2>
+  <p class="recipe-description">Cassava Cake is a traditional Filipino dessert made from grated cassava, coconut milk, eggs, and condensed milk. It's baked until set and topped with a creamy custard layer.</p>
+  <p class="recipe-category">Category: Dessert</p>
+</div>
+      
+        <!-- Recipe Popup -->
+        <div class="rpopup-overlay" id="recipePopup">
+          <div class="rpopup-content">
+              <span class="close-btn" onclick="closePopup()">&times;</span>
+              <div class="recipe-details">
+
+                  </div>
+                  <div class="recipe-description">
+                      <h2 id="popupRecipeTitle"></h2>
+                      <p id="popupRecipeDescription"></p>
+                      <div class="recipe-info">
+                          <h2>Ingredients</h2>
+                          <ul id="popupIngredientsList">
+                              <!-- Ingredients will be dynamically populated here -->
+                          </ul>
+                          <h2>Method</h2>
+                          <ol id="popupMethodSteps">
+                              <!-- Method steps will be dynamically populated here -->
+                          </ol>
+                          <h2>Time to Cook</h2>
+                          <p id="popupTimeToCook"></p>
+                          <h2>Nutritional Value</h2>
+                          <p id="popupNutritionalValue"></p>
+                          </div>
+                          <h2>Category</h2>
+                          <p id="popupRecipeCategory"></p>
+                          <!-- Plus and minus buttons for adjusting servings -->
+                          <!-- Inside the recipe popup -->
+                          <div class="servings">
+                              <span class="servings-title">Adjust Servings: </span>
+                              <button id="minus-btn" class="servings-btn" onclick="decreaseServings()">
+                                  <ion-icon name="remove-circle-outline"></ion-icon>
+                              </button>
+                              <span id="servings-count" class="servings-count">1</span>
+                              <button id="plus-btn" class="servings-btn" onclick="increaseServings()">
+                                  <ion-icon name="add-circle-outline"></ion-icon>
+                              </button>
+                              <!-- Ratings and Feedback Form -->
+                              <form id="feedbackForm" class="feedback-form" onsubmit="submitFeedback(event)">
+                                <h3>Rate this recipe:</h3>
+                                <div class="rating-icons">
+                                  <input type="radio" id="rating5" name="rating" value="5">
+                                  <label for="rating5"><ion-icon name="star-outline"></ion-icon></label>
+                                  <input type="radio" id="rating4" name="rating" value="4">
+                                  <label for="rating4"><ion-icon name="star-outline"></ion-icon></label>
+                                  <input type="radio" id="rating3" name="rating" value="3">
+                                  <label for="rating3"><ion-icon name="star-outline"></ion-icon></label>
+                                  <input type="radio" id="rating2" name="rating" value="2">
+                                  <label for="rating2"><ion-icon name="star-outline"></ion-icon></label>
+                                  <input type="radio" id="rating1" name="rating" value="1">
+                                  <label for="rating1"><ion-icon name="star-outline"></ion-icon></label>
+                                </div>
+                                
+                                <textarea id="feedback" name="feedback" rows="4" placeholder="Leave your feedback here..."></textarea>
+                                <button type="submit">Submit</button>
+                              </form>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+      </div>
+    </div>
+
+    <!-- Pagination -->
+    <div class="pagination-container">
+      <div class="pagination">
+        <button onclick="changePage(1)" class="active">1</button>
+        <button onclick="changePage(2)">2</button>
+        <button onclick="changePage(3)">3</button>
+        <!-- Add more buttons for additional pages -->
+      </div>
+    </div>
+
+<!-- Add Recipe Form Popup -->
+<div class="popup-overlay" id="addRecipeFormPopup">
+  <div class="popup-content">
+      <span class="close-btn" onclick="closeAddRecipeForm()">&times;</span>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Create Recipe</title>
+      <style>
+          label {
+              display: block;
+              margin-bottom: 5px;
+          }
+          input[type="text"], input[type="number"], textarea {
+              width: 100%;
+              margin-bottom: 10px;
+          }
+
+      </style>
+      </head>
+      <body>
+      <h1>Create Recipe</h1>
+      
+      <form id="recipeForm">
+          <label for="name">Recipe Name:</label>
+          <input type="text" id="name" name="name" required>
+      
+          <label for="description">Description:</label>
+          <textarea id="description" name="description" required></textarea>
+      
+          <label for="servings">Number of Servings:</label>
+          <input type="number" id="servings" name="servings" min="1" required>
+      
+          <label for="prepTime">Preparation Time (minutes):</label>
+          <input type="number" id="prepTime" name="prepTime" min="0" required>
+      
+          <label for="cookTime">Cooking Time (minutes):</label>
+          <input type="number" id="cookTime" name="cookTime" min="0" required>
+
+            <h2>Category</h2>
+            <label for="category">Category:</label>
+            <select id="category" name="category" required>
+              <option value="" disabled selected>Select a category</option>
+              <option value="Chicken">Chicken</option>
+              <option value="Pork">Pork</option>
+              <option value="Dessert">Dessert</option>
+              <option value="Beef">Beef</option>
+              <option value="Vegetable">Vegetable</option>
+              <option value="Fish">Fish</option>
+              <option value="Other">Other</option>
+            </select>
+
+      
+          <h2>Ingredients</h2>
+          <div id="ingredients">
+              <div>
+                  <label for="ingredientName1">Ingredient Name:</label>
+                  <input type="text" id="ingredientName1" name="ingredientName" required>
+      
+                  <label for="calories1">Calories:</label>
+                  <input type="number" id="calories1" name="calories" min="0" required>
+      
+                  <label for="protein1">Protein (g):</label>
+                  <input type="number" id="protein1" name="protein" min="0" required>
+      
+                  <label for="fat1">Fat (g):</label>
+                  <input type="number" id="fat1" name="fat" min="0" required>
+      
+                  <label for="carbohydrates1">Carbohydrates (g):</label>
+                  <input type="number" id="carbohydrates1" name="carbohydrates" min="0" required>
+              </div>
+          </div>
+          <button type="button" onclick="addIngredient()">Add Ingredient</button>
+      
+          <h2>Steps</h2>
+          <div id="steps">
+              <div>
+                  <label for="step1">Step 1:</label>
+                  <textarea id="step1" name="step" required></textarea>
+              </div>
+          </div>
+          <button type="button" onclick="addStep()">Add Step</button>
+          <h2>Image</h2>
+          <div id="image">
+              <div>
+                  <label for="image1">Image:</label>
+                  <input type="file" id="image1" name="image" accept="image/*" required>
+              </div>
+          </div>
+          <button type="button" onclick="addImage()">Add Image</button>
+          <button type="submit">Save Recipe</button>
+      </form>
+      <script src="script.js"></script>
+      <script>
+let ingredientCount = 1;
+let stepCount = 1;
+let imageCount = 0;
+
+function addIngredient() {
+    ingredientCount++;
+    const ingredientsDiv = document.getElementById('ingredients');
+
+    const ingredientDiv = document.createElement('div');
+    ingredientDiv.innerHTML = `
+        <hr>
+        <label for="ingredientName${ingredientCount}">Ingredient Name:</label>
+        <input type="text" id="ingredientName${ingredientCount}" name="ingredientName${ingredientCount}" required>
+
+        <label for="calories${ingredientCount}">Calories:</label>
+        <input type="number" id="calories${ingredientCount}" name="calories${ingredientCount}" min="0" required>
+
+        <label for="protein${ingredientCount}">Protein (g):</label>
+        <input type="number" id="protein${ingredientCount}" name="protein${ingredientCount}" min="0" required>
+
+        <label for="fat${ingredientCount}">Fat (g):</label>
+        <input type="number" id="fat${ingredientCount}" name="fat${ingredientCount}" min="0" required>
+
+        <label for="carbohydrates${ingredientCount}">Carbohydrates (g):</label>
+        <input type="number" id="carbohydrates${ingredientCount}" name="carbohydrates${ingredientCount}" min="0" required>
+    `;
+
+    ingredientsDiv.appendChild(ingredientDiv);
+}
+
+function addStep() {
+    stepCount++;
+    const stepsDiv = document.getElementById('steps');
+
+    const stepDiv = document.createElement('div');
+    stepDiv.innerHTML = `
+        <hr>
+        <label for="step${stepCount}">Step ${stepCount}:</label>
+        <textarea id="step${stepCount}" name="step${stepCount}" required></textarea>
+    `;
+
+    stepsDiv.appendChild(stepDiv);
+}
+
+document.getElementById('recipeForm').addEventListener('submit', function(event) {
+    event.preventDefault();
+
+    const form = event.target;
+    const formData = new FormData(form);
+
+    const ingredients = [];
+    for (let i = 1; i <= ingredientCount; i++) {
+        const ingredient = {
+            name: formData.get(`ingredientName${i}`),
+            calories: parseInt(formData.get(`calories${i}`)),
+            protein: parseInt(formData.get(`protein${i}`)),
+            fat: parseInt(formData.get(`fat${i}`)),
+            carbohydrates: parseInt(formData.get(`carbohydrates${i}`))
+        };
+        ingredients.push(ingredient);
+    }
+
+    const steps = [];
+    for (let i = 1; i <= stepCount; i++) {
+        steps.push(formData.get(`step${i}`));
+    }
+
+    const recipeData = {
+        name: formData.get('name'),
+        description: formData.get('description'),
+        servings: parseInt(formData.get('servings')),
+        prepTime: parseInt(formData.get('prepTime')),
+        cookTime: parseInt(formData.get('cookTime')),
+        ingredients: ingredients,
+        steps: steps
+    };
+
+    saveRecipe(recipeData);
+});
+
+function saveRecipe(recipeData) {
+    fetch('/api/recipes', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(recipeData)
+    })
+    .then(response => response.json())
+    .then(data => {
+        alert(data.message);
+        // Optionally, you can redirect to another page or perform any other action
+    })
+    .catch(error => {
+        console.error('Error saving recipe:', error);
+        alert('Failed to save recipe. Please try again.');
+    });
+}
+
+function addImage() {
+    if (imageCount >= 1) {
+        alert("Only one image is allowed.");
+        return;
+    }
+
+    const imageDiv = document.getElementById('image');
+
+    const imageInput = document.createElement('input');
+    imageInput.type = 'file';
+    imageInput.name = 'image';
+    imageInput.accept = 'image/*';
+    imageInput.required = true;
+
+    imageDiv.appendChild(imageInput);
+
+    imageCount++;
+}
+
+    </script>
+        </div>
+    </div>
+
+    <div class="popup-overlay" id="recipePopup">
+      <div class="popup-content">
+        <span class="close-btn" onclick="closePopup()">&times;</span>
+        <div class="recipe-details">
+          <div class="recipe-image">
+            <img id="popupRecipeImage" alt="Recipe Image">
+          </div>
+          <div class="recipe-description">
+            <h2 id="popupRecipeTitle"></h2>
+            <p id="popupRecipeDescription"></p>
+            <div class="recipe-info">
+              <h2>Category</h2>
+              <p id="popupRecipeCategory"></p> <!-- Category will be dynamically populated here -->
+              <h2>Ingredients</h2>
+              <ul id="popupIngredientsList">
+                <!-- Ingredients will be dynamically populated here -->
+              </ul>
+              <h2>Method</h2>
+              <ol id="popupMethodSteps">
+                <!-- Method steps will be dynamically populated here -->
+              </ol>
+              <h2>Time to Cook</h2>
+              <p id="popupTimeToCook"></p>
+              <h2>Nutritional Value</h2>
+              <p id="popupNutritionalValue"></p>
+              <div class="servings">
+                <span class="servings-title">Adjust Servings: </span>
+                <button id="minus-btn" class="servings-btn" onclick="decreaseServings()">
+                  <ion-icon name="remove-circle-outline"></ion-icon>
+                </button>
+                <span id="servings-count" class="servings-count">1</span>
+                <button id="plus-btn" class="servings-btn" onclick="increaseServings()">
+                  <ion-icon name="add-circle-outline"></ion-icon>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+
+    <script src="script.js"></script>
+    <script>
+        function searchRecipe(event) {
+            event.preventDefault(); // Prevent the form from submitting
+            const searchQuery = document.getElementById('searchQuery').value.toLowerCase();
+            const recipeCards = document.querySelectorAll('.recipe-card');
+            
+            recipeCards.forEach(card => {
+                const title = card.querySelector('.recipe-title').textContent.toLowerCase();
+                const description = card.querySelector('.recipe-description').textContent.toLowerCase();
+                
+                if (title.includes(searchQuery) || description.includes(searchQuery)) {
+                    card.style.display = 'block'; // Show the card if it matches the search query
+                } else {
+                    card.style.display = 'none'; // Hide the card if it doesn't match the search query
+                }
+            });
+        }
+
+        // Function to show recipe details popup
+        function showRecipeDetails(recipeTitle) {
+            const recipeData = getRecipeData(recipeTitle);
+            const popup = document.getElementById('recipePopup');
+            const popupRecipeImage = document.getElementById('popupRecipeImage');
+            const popupRecipeTitle = document.getElementById('popupRecipeTitle');
+            const popupRecipeDescription = document.getElementById('popupRecipeDescription');
+            const popupIngredientsList = document.getElementById('popupIngredientsList');
+            const popupMethodSteps = document.getElementById('popupMethodSteps');
+            const popupTimeToCook = document.getElementById('popupTimeToCook');
+            const popupNutritionalValue = document.getElementById('popupNutritionalValue');
+
+            // Set popup content
+            let imagePath = ''; // Variable to store the image path
+
+            // Determine the image path based on recipeTitle
+            if (recipeTitle === 'Kare-Kare') {
+                imagePath = 'pics/karekare.jpg';
+            } else if (recipeTitle === 'Lumpiang Shanghai') {
+                imagePath = 'pics/lumpia.jpg';
+            } else {
+                imagePath = `pics/${recipeTitle.toLowerCase().replace(' ', '-')}.jpg`;
+            }
+
+            
+            popupRecipeTitle.textContent = recipeData.title;
+            popupRecipeDescription.textContent = recipeData.description;
+            popupIngredientsList.innerHTML = '';
+            recipeData.ingredients.forEach(ingredient => {
+                const li = document.createElement('li');
+                li.textContent = ingredient;
+                popupIngredientsList.appendChild(li);
+            });
+            popupMethodSteps.innerHTML = '';
+            recipeData.method.forEach(step => {
+                const li = document.createElement('li');
+                li.textContent = step;
+                popupMethodSteps.appendChild(li);
+            });
+            popupTimeToCook.textContent = `Time to cook: ${recipeData.timeToCook}`;
+            popupNutritionalValue.textContent = recipeData.nutritionalValue;
+
+            // Show the popup
+            popup.style.display = 'flex';
+        }
+
+        // Function to close the recipe popup
+        function closePopup() {
+            const popup = document.getElementById('recipePopup');
+            popup.style.display = 'none';
+        }
+
+        // Function to show add recipe form popup
+        function showAddRecipeForm() {
+            const addRecipeFormPopup = document.getElementById('addRecipeFormPopup');
+            addRecipeFormPopup.style.display = 'block';
+        }
+
+        // Function to close add recipe form popup
+        function closeAddRecipeForm() {
+            const addRecipeFormPopup = document.getElementById('addRecipeFormPopup');
+            addRecipeFormPopup.style.display = 'none';
+        }
+
+        // Function to handle adding a new recipe
+        function submitRecipe(event) {
+            event.preventDefault(); // Prevent the form from submitting
+            // Add your logic to handle adding a new recipe here
+            alert("Functionality to add a new recipe will be implemented here.");
+        }
+
+      </script>
+    <script
+      type="module"
+      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"
+    ></script>
+    <script
+      nomodule
+      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"
+    ></script>
+    <div>
+
+  
+</body>
+</html>

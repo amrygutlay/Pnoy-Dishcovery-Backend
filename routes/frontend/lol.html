@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Recipe Creator</title>
+<style>
+   .ingredient-list,.step-list {
+        margin-bottom: 20px;
+    }
+</style>
+</head>
+<body>
+<h1>Recipe Creator</h1>
+
+<div>
+    <h2>Ingredients:</h2>
+    <div class="ingredient-list">
+        <input type="text" placeholder="Ingredient" class="ingredient-input">
+        <button onclick="addIngredient()">Add Ingredient</button>
+    </div>
+    <button onclick="addNewIngredientField()">Add New Ingredient Field</button>
+</div>
+
+<div>
+    <h2>Steps:</h2>
+    <div class="step-list">
+        <input type="text" placeholder="Step" class="step-input">
+        <button onclick="addStep()">Add Step</button>
+    </div>
+    <button onclick="addNewStepField()">Add New Step Field</button>
+</div>
+
+<div>
+    <button onclick="createRecipe()">Create Recipe</button>
+</div>
+
+<div id="recipe"></div>
+
+<script>
+    let ingredients = [];
+    let steps = [];
+
+    function addIngredient() {
+        const ingredientInputs = document.querySelectorAll('.ingredient-input');
+        ingredientInputs.forEach(input => {
+            const ingredient = input.value.trim();
+            if (ingredient) {
+                ingredients.push(ingredient);
+                input.value = '';
+            }
+        });
+        updateIngredientList();
+    }
+
+    function updateIngredientList() {
+        const ingredientListDiv = document.querySelector('.ingredient-list');
+        ingredientListDiv.innerHTML = '';
+        ingredients.forEach((ingredient, index) => {
+            const ingredientItem = document.createElement('div');
+            ingredientItem.textContent = ingredient;
+            const deleteButton = document.createElement('button');
+            deleteButton.textContent = 'Delete';
+            deleteButton.onclick = function() {
+                deleteIngredient(index);
+            };
+            ingredientItem.appendChild(deleteButton);
+            ingredientListDiv.appendChild(ingredientItem);
+        });
+    }
+
+    function deleteIngredient(index) {
+        ingredients.splice(index, 1);
+        updateIngredientList();
+    }
+
+    function addStep() {
+        const stepInputs = document.querySelectorAll('.step-input');
+        stepInputs.forEach(input => {
+            const step = input.value.trim();
+            if (step) {
+                steps.push(step);
+                input.value = '';
+            }
+        });
+        updateStepList();
+    }
+
+    function updateStepList() {
+        const stepListDiv = document.querySelector('.step-list');
+        stepListDiv.innerHTML = '';
+        steps.forEach((step, index) => {
+            const stepItem = document.createElement('div');
+            stepItem.textContent = `${index + 1}. ${step}`;
+            const deleteButton = document.createElement('button');
+            deleteButton.textContent = 'Delete';
+            deleteButton.onclick = function() {
+                deleteStep(index);
+            };
+            stepItem.appendChild(deleteButton);
+            stepListDiv.appendChild(stepItem);
+        });
+    }
+
+    function deleteStep(index) {
+        steps.splice(index, 1);
+        updateStepList();
+    }
+
+    function createRecipe() {
+        const recipeDiv = document.getElementById('recipe');
+        recipeDiv.innerHTML = '';
+        const recipeHeading = document.createElement('h2');
+        recipeHeading.textContent = 'Recipe:';
+        recipeDiv.appendChild(recipeHeading);
+
+        const ingredientHeading = document.createElement('h3');
+        ingredientHeading.textContent = 'Ingredients:';
+        recipeDiv.appendChild(ingredientHeading);
+
+        const ingredientList = document.createElement('ul');
+        ingredients.forEach(ingredient => {
+            const ingredientItem = document.createElement('li');
+            ingredientItem.textContent = ingredient;
+            ingredientList.appendChild(ingredientItem);
+        });
+        recipeDiv.appendChild(ingredientList);
+
+        const stepHeading = document.createElement('h3');
+        stepHeading.textContent = 'Steps:';
+        recipeDiv.appendChild(stepHeading);
+
+        const stepList = document.createElement('ol');
+        steps.forEach((step, index) => {
+            const stepItem = document.createElement('li');
+            stepItem.textContent = `${index + 1}. ${step}`;
+            stepList.appendChild(stepItem);
+        });
+        recipeDiv.appendChild(stepList);
+    }
+
+    function addNewIngredientField() {
+        const ingredientListDiv = document.querySelector('.ingredient-list');
+        const newIngredientInput = document.createElement('input');
+        newIngredientInput.type = 'text';
+        newIngredientInput.placeholder = 'Ingredient';
+    }

@@ -1,0 +1,623 @@
+/* Color scheme */
+:root {
+    --primary-color: #A5705E; /* Primary color */
+    --white-color: #ffffff; /* White */
+    --dark-color: #333333; /* Dark gray */
+    --black-color: #000000; /* Black */
+}
+
+
+/* Reset default margin and set global styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Goudy Old Style', serif;
+}
+
+/* Body styles to remove scroll */
+body {
+    overflow: hidden;
+}
+
+/* Navbar styles */
+.navbar {
+    width: 100%; /* Adjusted width to cover the entire header */
+    padding: 10px 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute; /* Position navbar absolutely */
+    top: 0; /* Position navbar at the top of the header */
+    left: 0; /* Align navbar to the left */
+    z-index: 999; /* Ensure navbar is on top of other content */
+}
+
+.navbar .logo {
+    height: 100px;
+    width: auto;
+    cursor: pointer;
+    margin-left: 0px;
+}
+
+.navbar ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.navbar ul li {
+    display: inline;
+    margin: 10px;
+    position: relative;
+}
+
+.navbar ul li a {
+    text-decoration: none;
+    color: var(--white-color);
+    text-transform: uppercase;
+}
+
+.navbar ul li::after {
+    content: '';
+    height: 3px;
+    width: 0;
+    background: var(--primary-color);
+    position: absolute;
+    left: 0;
+    bottom: -10px;
+    transition: width 0.5s;
+}
+
+.navbar ul li:hover::after {
+    width: 100%;
+}
+
+/* Content styles */
+.content {
+    width: 100%;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    text-align: center;
+    color: var(--white-color);
+    padding: 20px;
+}
+
+.content h1 {
+    font-size: 70px;
+    margin-top: 80px;
+}
+
+.content p {
+    margin: 20px auto;
+    font-weight: 100;
+    line-height: 1.5;
+}
+
+/* Button styles */
+button,
+.login-button,
+.register-button {
+    width: 200px;
+    padding: 15px 0;
+    text-align: center;
+    margin: 20px 10px;
+    border-radius: 25px;
+    font-weight: bold;
+    border: 2px solid var(--primary-color);
+    background: transparent;
+    color: var(--white-color);
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+}
+
+button span,
+.login-button span,
+.register-button span {
+    background: var(--primary-color);
+    height: 100%;
+    width: 0;
+    border-radius: 25px;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    z-index: -1;
+    transition: width 0.5s;
+}
+
+button:hover span,
+.login-button:hover span,
+.register-button:hover span {
+    width: 100%;
+}
+
+button:hover,
+.login-button:hover,
+.register-button:hover {
+    border: none;
+    color: var(--white-color);
+}
+
+/* Form styling */
+.login-form,
+.register-form {
+    width: 85%;
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 0px;
+    background-color: rgba(255, 255, 255, 0.2);
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+/* Input box styling */
+.input-box {
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid var(--primary-color);
+    padding-bottom: 5px;
+}
+
+.input-box input {
+    flex-grow: 1;
+    padding: 10px;
+    background: transparent;
+    border: none;
+    color: var(--white-color);
+    font-size: 16px;
+    outline: none;
+    margin-left: 10px;
+    transition: border-bottom-color 0.3s;
+}
+
+.input-box input:focus {
+    border-bottom-color: var(--primary-color);
+}
+
+.input-box .icon {
+    color: var(--primary-color);
+}
+
+/* Link styling */
+.register-link,
+.forgot-password-link,
+.login-link {
+    color: var(--primary-color);
+    text-decoration: none;
+}
+
+.register-link:hover,
+.forgot-password-link:hover,
+.login-link:hover {
+    text-decoration: underline;
+}
+
+/* styles.css */
+
+.search-bar {
+    display: flex;
+    align-items: center;
+    margin-right: 10px;
+}
+
+.search-bar input[type="text"] {
+    height: 40px;
+    padding: 10.4px;
+    border-radius: 100px 0 0 100px; /* Adjusted border radius for a seamless integration */
+    border: 2px solid var(--primary-color); /* Adjusted border for a seamless integration */
+    border-right: none; /* Remove right border to merge with button */
+    outline: none; /* Remove default input focus outline */
+    transition: border-color 0.3s ease; /* Smooth transition for border color change */
+    flex: 1; /* Take remaining space */
+    
+}
+
+.search-bar input[type="text"]:focus {
+    border-color: var(--primary-color); /* Change border color on focus */
+}
+
+.search-bar button {
+    width: 50px; /* Adjusted button width for better proportion */
+    height: 50px; /* Adjusted button height for better proportion */
+    font-size: 1.5rem; /* Slightly reduced font size for better fit */
+    border: 2px solid var(--primary-color); /* Adjusted border for a seamless integration */
+    border-radius: 0 25px 25px 0; /* Adjusted border radius for a seamless integration */
+    background-color: var(--primary-color);
+    color: var(--white-color);
+    cursor: pointer;
+    margin-left: 0px;
+    transition: background-color 0.3s ease; /* Smooth transition for background color change */
+    display: flex;
+    justify-content: center; /* Center the content horizontally */
+    align-items: center; /* Center the content vertically */
+}
+
+.search-bar button:hover {
+    background-color: darken(var(--primary-color), 10%); /* Darken button color on hover */
+    border-color: darken(var(--primary-color), 10%); /* Darken border color on hover */
+}
+
+.search-bar button ion-icon {
+    font-size: 1.2rem; /* Adjusted icon size for better visibility */
+    line-height: normal; /* Reset line-height to normal */
+}
+
+/* Add your flexbox styles here */
+.recipes-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    margin-top: 20px;
+    position: absolute;
+    top: 50%; /* Position from the middle of the viewport */
+    left: 50%; /* Position from the middle of the viewport */
+    transform: translate(-50%, -50%); /* Center the container */
+    z-index: 2;
+    max-height: 450px;
+    max-width: 1300px; /* Set a maximum width */
+    width: 100%;
+    height: 100%;
+    padding: 20px; /* Add padding for spacing */
+    background-color: rgba(255, 255, 255, 0.2); /* Semi-transparent background */
+    border-radius: 10px; /* Add border radius */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Add shadow for depth */
+}
+  
+.recipe-card {
+    height: 400px;
+    width: 290px; /* Adjust as needed */
+    margin-bottom: 0px; /* Add space between recipe cards */
+    background-color: #f9f9f9; /* Add background color for better visibility */
+    border-radius: 8px; /* Add border radius for rounded corners */
+    box-shadow: 0 2spx 4px rgba(0, 0, 0, 0.1); /* Add shadow for depth */
+    padding: 20px; /* Add padding inside the card */
+}
+  
+.recipe-title {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+  
+  .recipe-description {
+    font-size: 16px;
+}
+
+.banner {
+    width: 100%;
+    height: 100vh;
+    position: relative;
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.75)), url(pics/bg1.png) center center/cover;
+    color: var(--white-color);
+    padding: 20px;
+    text-align: center;
+}
+
+/* Pagination styles */
+.pagination-container {
+    width: 100%;
+    position: absolute;
+    bottom: 20px; /* Adjust as needed */
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 2;
+  }
+  
+  .pagination {
+    display: flex;
+    justify-content: center;
+  }
+  
+  .pagination button {
+    background-color: var(--primary-color);
+    color: var(--white-color);
+    border: none;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    margin: 0 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .pagination button:hover {
+    background-color: darken(var(--primary-color), 10%);
+  }
+  
+  .pagination button.active {
+    background-color: darken(var(--primary-color), 10%);
+  }
+
+  .servings {
+    display: flex; /* Use flexbox */
+    align-items: center; /* Center items vertically */
+}
+
+.servings-btn {
+    width: 30px; /* Set width */
+    height: 30px; /* Set height */
+    padding: 0; /* Remove padding */
+    font-size: 16px;
+    border: none; /* Remove border */
+    background-color: var(--primary-color); /* Use primary color */
+    color: var(--white-color); /* Text color */
+    border-radius: 50%; /* Make it round */
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 5px; /* Add margin for spacing */
+}
+
+.servings-btn:hover {
+    background-color: var(--dark-color); /* Darker color on hover */
+}
+
+.servings-count {
+    padding: 0 10px;
+    font-size: 16px;
+    color: var(--dark-color); /* Use dark color for count */
+}
+
+.servings-title {
+    font-size: 16px;
+    color: var(--dark-color); /* Use dark color for the title */
+    margin-right: 10px; /* Add some margin between title and buttons */
+}
+
+.recipe-card img {
+    width: 250px;
+    height: 200px;
+    object-fit: cover; /* Maintain aspect ratio and crop if necessary */
+    border-radius: 8px 8px 0 0; /* Add border radius to match card corners */
+  }
+
+  /* Center pagination */
+  .footer {
+    text-align: center;
+  }
+
+  .pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+  }
+
+  .pagination a {
+    color: black;
+    float: left;
+    padding: 8px 16px;
+    text-decoration: none;
+    transition: background-color 0.3s;
+    border: 1px solid #ddd;
+  }
+
+  .pagination a.active {
+    background-color: #A5705E;
+    color: white;
+    border: 1px solid #A5705E;
+  }
+
+  .pagination a:hover:not(.active) {
+    background-color: #ddd;
+  }
+    /* Additional CSS to adjust image size */
+    .recipe-card img {
+        width: 250px;
+        height: 200px;
+        object-fit: cover; /* Maintain aspect ratio and crop if necessary */
+        border-radius: 8px 8px 0 0; /* Add border radius to match card corners */
+    
+    .add-recipe-container {
+            display: flex;
+            justify-content: center;
+            margin-top: 100px; /* Adjust as needed */
+        }
+        
+        .add-recipe-button {
+            padding: 15px 30px;
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 18px;
+            transition: background-color 0.3s ease;
+        }
+        
+
+
+.profile-info {
+    display: flex;
+    align-items: center;
+    justify-content: center; /* Center horizontally */
+    margin-bottom: 30px;
+    text-align: center; /* Center align text */
+  }
+  
+  .avatar-container {
+    position: relative; /* Positioning context for the avatar */
+  }
+  
+  .avatar {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    cursor: pointer;
+    border: 5px solid var(--primary-color); /* Add border */
+  }
+  
+  .user-details {
+    font-size: 1.2rem;
+    margin-top: 20px; /* Adjust spacing between avatar and user details */
+  }
+  
+  .user-details h2 {
+    margin-bottom: 10px;
+    color: var(--white-color); /* Change heading color */
+  }
+  
+  .user-details p {
+    color: var(--white-color);
+  }
+  
+  .saved-recipes,
+  .shopping-list {
+    margin-top: 40px;
+  }
+  
+  .saved-recipes h2,
+  .shopping-list h2 {
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+    color: var(--white-color);
+  }
+  
+  .saved-recipes ul,
+  .shopping-list ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .saved-recipes ul li,
+  .shopping-list ul li {
+    margin-bottom: 10px;
+    font-size: 1.2rem;
+    color: var(--white-color);
+  }
+  
+  .saved-recipes ul li a,
+  .shopping-list ul li {
+    text-decoration: none;
+    transition: color 0.3s;
+  }
+  
+  .saved-recipes ul li a:hover {
+    color: var(--primary-color); /* Change hover color */
+  }
+  
+  /* Hide input[type="file"] element */
+  #avatar-upload {
+    display: none;
+  }
+  
+  /* Smaller font size for the User Profile heading */
+  .content h1 {
+    font-size: 2.5rem;
+    color: var(--white-color);
+  }
+  
+    .recipe-details {
+        display: flex;
+        flex-wrap: wrap;
+    }
+    .recipe-image {
+        margin-bottom: 20px;
+    }
+    .recipe-image img {
+        width: 100%;
+        max-width: 300%;
+        height: auto;
+        border-radius: 15px;
+    }
+    .recipe-description {
+        flex: 1;
+        font-size: 18px;
+        line-height: 1.6;
+        margin-top: 20px;
+    }
+    .recipe-info {
+        margin-top: 30px;
+    }
+    .recipe-info h2 {
+        font-size: 20px;
+        margin-bottom: 15px;
+    }
+    .recipe-info ul, .recipe-info ol {
+        margin-left: 0;
+        padding-left: 20px;
+    }
+    }
+            /* Additional CSS to adjust image size */
+            .recipe-card img {
+                width: 250px;
+                height: 200px;
+                object-fit: cover; /* Maintain aspect ratio and crop if necessary */
+                border-radius: 8px 8px 0 0; /* Add border radius to match card corners */
+            }
+
+            .rpopup-overlay {
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background-color: rgba(0, 0, 0, 0.5);
+                display: none;
+                justify-content: center;
+                align-items: center;
+                z-index: 999;
+            }
+            .rpopup-content {
+                background-color: var(--white-color);
+                padding: 40px;
+                border-radius: 15px;
+                box-shadow: 0 0 210px rgba(0, 0, 0, 0.3);
+                max-width: 80%; /* Expanded width for the popup */
+                max-height: 70vh;
+                overflow-y: auto;
+                position: relative;
+                display: flex;
+                flex-direction: column;
+                justify-content: flex-start;
+                align-items: center;
+                color: #333; /* Font color */
+            }
+            .close-btn {
+                position: absolute;
+                top: 10px;
+                right: 10px;
+                cursor: pointer;
+                font-size: 20px;
+                color: #555;
+            }
+            .rating-icons {  /* Target the container within the recipe form */
+                display: flex;
+                align-items: center;
+              }
+            .rating-icons label {
+                color: #ddd; /* Default color */
+                flex-direction: column;
+                cursor: pointer;
+            }
+        
+            .rating-icons input[type="radio"] {
+                display: none; /* Hide radio buttons */
+            }
+        
+            .rating-icons label:hover ion-icon,
+            .rating-icons input[type="radio"]:checked ~ label ion-icon {
+                color: gold; /* Change icon color on hover and when checked */
+                transform: scale(1.2); /* Increase size on hover and when checked */
+                transition: all 0.3s ease; /* Smooth transition */
+            }
+        
+            .rating-icons input[type="radio"]:checked ~ label {
+                color: gold; /* Change color of checked stars to gold */
+            }
+        
+            /* Style to override for 5-star rating */
+            #rating5:checked ~ label {
+                color: gold;
+            }
+            .submitRecipe:hover{
+                background-color: darken(#A5705E, 10%); /* Darken primary color on hover */
+
+             }

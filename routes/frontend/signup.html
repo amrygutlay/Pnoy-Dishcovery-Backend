@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Register - Pnoy Dishcovery</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="banner">
+      <div class="navbar">
+        <img src="pics/logo.png" class="logo" alt="Pnoy Dishcovery Logo" />
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="recipe.html">Recipes</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="login.html">Log in</a></li>
+        </ul>
+      </div>
+
+      <div class="content">
+        <h2>Register</h2>
+        <form id="signupForm" method="POST" class="register-form">
+          <div class="input-box">
+            <span class="icon"><ion-icon name="person"></ion-icon></span>
+            <input
+              type="text"
+              id="firstname"
+              required
+              placeholder="First Name"
+              name="firstname"
+            />
+          </div>
+          <div class="input-box">
+            <span class="icon"><ion-icon name="person"></ion-icon></span>
+            <input
+              type="text"
+              id="lastname"
+              required
+              placeholder="Last Name"
+              name="lastname"
+            />
+          </div>
+          <div class="input-box">
+            <span class="icon"><ion-icon name="mail"></ion-icon></span>
+            <input type="email" required id="email" placeholder="Email" name="email" />
+          </div>
+          <div class="input-box">
+            <span class="icon"><ion-icon name="lock-closed"></ion-icon></span>
+            <input
+              type="password"
+              required
+              id="password"
+              placeholder="Password"
+              name="password"
+            />
+          </div>
+          <!-- Register button within the form -->
+          <button type="submit" class="register-button">
+            <span></span>
+            Register
+          </button>
+        </form>
+        <div class="login">
+          <p>
+            Already have an account?
+            <a href="login.html" class="login-link">Log in</a>
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Include Ionicons scripts -->
+    <script
+      type="module"
+      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"
+    ></script>
+    <script
+      nomodule
+      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"
+    ></script>
+
+    <script>
+      document.getElementById('signupForm').addEventListener('submit', async function(event) {
+        event.preventDefault();
+      
+        const formData = new FormData(this);
+        const userData = {
+          u_firstname: formData.get('firstname'),
+          u_lastname: formData.get('lastname'),
+          email: formData.get('email'),
+          password: formData.get('password')
+        };
+      
+        try {
+          const response = await fetch('http://localhost:5000/authentication/signup', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(userData)
+          });
+      
+          if (response.ok) {
+            const data = await response.json();
+            alert('Signup successful!');
+            console.log(data);
+            console.log('Token:', data.token); // Log token if needed
+                    // Redirect to home.html after successful login
+                    window.location.href = 'recipe.html';
+          } else {
+            const errorMessage = await response.text();
+            alert(`Error: ${errorMessage}`);
+          }
+        } catch (error) {
+          console.error('Error:', error);
+          alert('An error occurred. Please try again later.');
+        }
+      });
+      </script>
+      
+      </body>
+      </html>
+                                                      

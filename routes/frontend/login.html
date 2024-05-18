@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Pnoy Dishcovery</title>
+    <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+    <div class="banner">
+        <div class="navbar">
+            <img src="pics/logo.png" class="logo" alt="Pnoy Dishcovery Logo" />
+            <ul>
+                <li><a href="home.html">Home</a></li>
+                <li><a href="recipe.html">Recipes</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="login.html">Log in</a></li>
+            </ul>
+        </div>
+
+        <div class="content">
+            <h2>Login</h2>
+            <!-- Login form -->
+            <form id="login-form" class="login-form">
+                <div class="input-box">
+                    <span class="icon"><ion-icon name="mail"></ion-icon></span>
+                    <input 
+                    type="email" 
+                    name="email" 
+                    id="email"
+                    required 
+                    placeholder="Email" />
+                </div>
+                <div class="input-box">
+                    <span class="icon"><ion-icon name="lock-closed"></ion-icon></span>
+                    <input
+                    type="password"
+                    name="password"
+                    id="password"
+                    required
+                    placeholder="Password"
+                    />
+                </div>
+                <button type="submit" class="login-button"><span></span>Login</button>
+            </form>
+
+            <!-- Registration section -->
+            <div class="register">
+                <p>
+                    Don't have an account?
+                    <a href="register.html" class="register-link">Register</a>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Ionicons for icons -->
+    <script
+        type="module"
+        src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"
+    ></script>
+    <script
+        nomodule
+        src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"
+    ></script>
+
+    <script>
+        document.getElementById('login-form').addEventListener('submit', async function(event) {
+            event.preventDefault(); // Prevent form submission
+
+            const formData = new FormData(this); // Get form data
+            const formDataObj = Object.fromEntries(formData); // Convert form data to object
+
+            try {
+                const response = await fetch('http://localhost:5000/authentication/login', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(formDataObj) // Convert object to JSON string
+                });
+
+                const data = await response.json(); // Parse JSON response
+
+                if (response.ok) {
+                    alert('Login successful!');
+                    console.log('Login successful');
+                    console.log('Token:', data.token); // Log token if needed
+                    // Redirect to home.html after successful login
+                    window.location.href = 'logrecipe.html';
+                } else {
+                    console.error('Login failed:', data.error);
+                    // Display error message to the user
+                    alert('Login failed. ' + data.error);
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                // Display error message to the user
+                alert('An error occurred. Please try again later.');
+            }
+        });
+    </script>
+</body>
+</html>

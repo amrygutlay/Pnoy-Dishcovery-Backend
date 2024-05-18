@@ -1,0 +1,663 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pnoy Dishcovery - Recipes</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="recipeform.css">
+    <style>
+ 
+    </style>
+</head>
+<body>
+    <div class="banner">
+        <div class="navbar">
+            <img src="pics/logo.png" class="logo" alt="Pnoy Dishcovery Logo">
+            <form class="search-bar" onsubmit="searchRecipe(event)">
+                <input type="text" id="searchQuery" name="search_query" placeholder="Search...">
+                <button type="submit">
+                    <ion-icon name="search-outline"></ion-icon>
+                </button>
+            </form>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="recipe.html">Recipes</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="login.html">Log In</a></li>
+        </div>
+    </div>
+
+    <!-- Add your recipe container here -->
+    <div class="recipes-container" id="recipesContainer">
+        <!-- Recipe cards -->
+        <div class="recipe-card" onclick="showRecipeDetails('Sinigang')">
+            <img src="pics/sinigang.jpg" alt="Sinigang">
+            <h2 class="recipe-title">Sinigang</h2>
+            <p class="recipe-description">A sour Filipino soup typically associated with tamarind. It is often cooked with pork, beef, shrimp, or fish.</p>
+            <p class="recipe-category">Category: Pork</p>
+        </div>
+<!-- Recipe card for Adobo -->
+<div class="recipe-card" onclick="showRecipeDetails('Adobo')">
+    <img src="pics/adobo.jpg" alt="Adobo" />
+    <h2 class="recipe-title">Adobo</h2>
+    <p class="recipe-description">A Filipino chicken dish marinated in soy sauce, vinegar, and garlic, and then browned in oil, simmered until tender, and served with the reduced marinade.</p>
+    <p class="recipe-category">Category: Chicken</p>
+  </div>
+  
+  <!-- Recipe card for Kare-Kare -->
+  <div class="recipe-card" onclick="showRecipeDetails('Kare-Kare')">
+    <img src="pics/karekare.jpg" alt="Kare-Kare" />
+    <h2 class="recipe-title">Kare-Kare</h2>
+    <p class="recipe-description">A Filipino stew characterized by its rich peanut sauce. It is typically made with oxtail, tripe, and vegetables such as eggplant, banana flower, and string beans.</p>
+    <p class="recipe-category">Category: Beef/Vegetable</p>
+  </div>
+  
+  <!-- Recipe card for Lumpiang Shanghai -->
+  <div class="recipe-card" onclick="showRecipeDetails('Lumpiang Shanghai')">
+    <img src="pics/lumpia.jpg" alt="Lumpia" />
+    <h2 class="recipe-title">Lumpiang Shanghai</h2>
+    <p class="recipe-description">Filipino-style spring rolls filled with ground pork, minced onions, carrots, and spices, wrapped in thin spring roll wrappers and deep-fried until crispy.</p>
+    <p class="recipe-category">Category: Pork</p>
+  </div>
+  
+  <!-- Recipe card for Leche Flan -->
+  <div class="recipe-card" onclick="showRecipeDetails('Leche Flan')">
+    <img src="pics/leche_flan.jpg" alt="Leche Flan" />
+    <h2 class="recipe-title">Leche Flan</h2>
+    <p class="recipe-description">Leche Flan is a traditional Filipino dessert made with eggs, condensed milk, and caramelized sugar. It's known for its smooth texture and rich flavor.</p>
+    <p class="recipe-category">Category: Dessert</p>
+  </div>
+  
+  <!-- Recipe card for Halo-Halo -->
+  <div class="recipe-card" onclick="showRecipeDetails('Halo-Halo')">
+    <img src="pics/halo_halo.jpg" alt="Halo-Halo" />
+    <h2 class="recipe-title">Halo-Halo</h2>
+    <p class="recipe-description">Halo-Halo is a popular Filipino dessert that consists of a mixture of shaved ice and various sweet ingredients like beans, fruits, and gelatin, topped with evaporated milk and ice cream.</p>
+    <p class="recipe-category">Category: Dessert</p>
+  </div>
+  
+  <!-- Recipe card for Biko -->
+  <div class="recipe-card" onclick="showRecipeDetails('Biko')">
+    <img src="pics/biko.jpg" alt="Biko" />
+    <h2 class="recipe-title">Biko</h2>
+    <p class="recipe-description">Biko is a Filipino rice cake made from glutinous rice, coconut milk, and brown sugar. It's often served during special occasions and celebrations.</p>
+    <p class="recipe-category">Category: Dessert</p>
+  </div>
+  
+  <!-- Recipe card for Buko Salad -->
+  <div class="recipe-card" onclick="showRecipeDetails('Buko Salad')">
+    <img src="pics/buko_salad.jpg" alt="Buko Salad" />
+    <h2 class="recipe-title">Buko Salad</h2>
+    <p class="recipe-description">Buko Salad is a Filipino fruit salad made with young coconut, mixed fruits, cream, and condensed milk. It's a refreshing and sweet dessert commonly served during gatherings.</p>
+    <p class="recipe-category">Category: Dessert</p>
+  </div>
+  
+  <!-- Recipe card for Pinakbet -->
+  <div class="recipe-card" onclick="showRecipeDetails('Pinakbet')">
+    <img src="pics/pinakbet.jpg" alt="Pinakbet" />
+    <h2 class="recipe-title">Pinakbet</h2>
+    <p class="recipe-description">Pinakbet is a Filipino vegetable dish made from mixed vegetables such as squash, eggplant, okra, string beans, and bitter melon, sautéed in shrimp paste or fermented fish sauce.</p>
+    <p class="recipe-category">Category: Vegetable</p>
+  </div>
+  
+  <!-- Recipe card for Sisig -->
+  <div class="recipe-card" onclick="showRecipeDetails('Sisig')">
+    <img src="pics/sisig.jpg" alt="Sisig" />
+    <h2 class="recipe-title">Sisig</h2>
+    <p class="recipe-description">Sisig is a Filipino dish made from parts of pig's head and liver, seasoned with calamansi juice, onions, and chili peppers. It's often served on a sizzling plate and garnished with raw egg.</p>
+    <p class="recipe-category">Category: Pork</p>
+  </div>
+  
+  <!-- Recipe card for Kutsinta -->
+  <div class="recipe-card" onclick="showRecipeDetails('Kutsinta')">
+    <img src="pics/kutsinta.jpg" alt="Kutsinta" />
+    <h2 class="recipe-title">Kutsinta</h2>
+    <p class="recipe-description">Kutsinta is a Filipino steamed rice cake made from rice flour, brown sugar, and lye water. It has a jelly-like texture and is usually served with grated coconut.</p>
+    <p class="recipe-category">Category: Dessert</p>
+  </div>
+  
+  <!-- Recipe card for Cassava Cake -->
+  <div class="recipe-card" onclick="showRecipeDetails('Cassava Cake')">
+    <img src="pics/cassava_cake.jpg" alt="Cassava Cake" />
+    <h2 class="recipe-title">Cassava Cake</h2>
+    <p class="recipe-description">Cassava Cake is a traditional Filipino dessert made from grated cassava, coconut milk, eggs, and condensed milk. It's baked until set and topped with a creamy custard layer.</p>
+    <p class="recipe-category">Category: Dessert</p>
+  </div>      
+        <!-- Recipe Popup -->
+        <div class="rpopup-overlay" id="recipePopup">
+          <div class="rpopup-content">
+              <span class="close-btn" onclick="closePopup()">&times;</span>
+              <div class="recipe-details">
+
+                  </div>
+                  <div class="recipe-description">
+                      <h2 id="popupRecipeTitle"></h2>
+                      <p id="popupRecipeDescription"></p>
+                      <div class="recipe-info">
+                          <h2>Ingredients</h2>
+                          <ul id="popupIngredientsList">
+                              <!-- Ingredients will be dynamically populated here -->
+                          </ul>
+                          <h2>Method</h2>
+                          <ol id="popupMethodSteps">
+                              <!-- Method steps will be dynamically populated here -->
+                          </ol>
+                          <h2>Time to Cook</h2>
+                          <p id="popupTimeToCook"></p>
+                          <h2>Nutritional Value</h2>
+                          <p id="popupNutritionalValue"></p>
+                          <!-- Plus and minus buttons for adjusting servings -->
+                          <!-- Inside the recipe popup -->
+                          <div class="servings">
+                              <span class="servings-title">Adjust Servings: </span>
+                              <button id="minus-btn" class="servings-btn" onclick="decreaseServings()">
+                                  <ion-icon name="remove-circle-outline"></ion-icon>
+                              </button>
+                              <span id="servings-count" class="servings-count">1</span>
+                              <button id="plus-btn" class="servings-btn" onclick="increaseServings()">
+                                  <ion-icon name="add-circle-outline"></ion-icon>
+                              </button>
+
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+      </div>
+    </div>
+
+    <!-- Pagination -->
+    <div class="pagination-container">
+      <div class="pagination">
+        <button onclick="changePage(1)" class="active">1</button>
+        <button onclick="changePage(2)">2</button>
+        <button onclick="changePage(3)">3</button>
+        <!-- Add more buttons for additional pages -->
+      </div>
+    </div>
+
+<!-- Add Recipe Form Popup -->
+<div class="popup-overlay" id="addRecipeFormPopup">
+  <div class="popup-content">
+      <span class="close-btn" onclick="closeAddRecipeForm()">&times;</span>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Create Recipe</title>
+      <style>
+          label {
+              display: block;
+              margin-bottom: 5px;
+          }
+          input[type="text"], input[type="number"], textarea {
+              width: 100%;
+              margin-bottom: 10px;
+          }
+          button {
+              padding: 10px;
+              background-color: #4CAF50;
+              color: white;
+              border: none;
+              cursor: pointer;
+          }
+          button:hover {
+              background-color: #45a049;
+          }
+      </style>
+      </head>
+      <body>
+      <h1>Create Recipe</h1>
+      
+      <form id="recipeForm">
+          <label for="name">Recipe Name:</label>
+          <input type="text" id="name" name="name" required>
+      
+          <label for="description">Description:</label>
+          <textarea id="description" name="description" required></textarea>
+      
+          <label for="servings">Number of Servings:</label>
+          <input type="number" id="servings" name="servings" min="1" required>
+      
+          <label for="prepTime">Preparation Time (minutes):</label>
+          <input type="number" id="prepTime" name="prepTime" min="0" required>
+      
+          <label for="cookTime">Cooking Time (minutes):</label>
+          <input type="number" id="cookTime" name="cookTime" min="0" required>
+      
+          <h2>Ingredients</h2>
+          <div id="ingredients">
+              <div>
+                  <label for="ingredientName1">Ingredient Name:</label>
+                  <input type="text" id="ingredientName1" name="ingredientName" required>
+      
+                  <label for="calories1">Calories:</label>
+                  <input type="number" id="calories1" name="calories" min="0" required>
+      
+                  <label for="protein1">Protein (g):</label>
+                  <input type="number" id="protein1" name="protein" min="0" required>
+      
+                  <label for="fat1">Fat (g):</label>
+                  <input type="number" id="fat1" name="fat" min="0" required>
+      
+                  <label for="carbohydrates1">Carbohydrates (g):</label>
+                  <input type="number" id="carbohydrates1" name="carbohydrates" min="0" required>
+              </div>
+          </div>
+          <button type="button" onclick="addIngredient()">Add Ingredient</button>
+      
+          <h2>Steps</h2>
+          <div id="steps">
+              <div>
+                  <label for="step1">Step 1:</label>
+                  <textarea id="step1" name="step" required></textarea>
+              </div>
+          </div>
+          <button type="button" onclick="addStep()">Add Step</button>
+          <h2>Image</h2>
+          <div id="image">
+              <div>
+                  <label for="image1">Image:</label>
+                  <input type="file" id="image1" name="image" accept="image/*" required>
+              </div>
+          </div>
+          <button type="button" onclick="addImage()">Add Image</button>
+          <button type="submit">Save Recipe</button>
+      </form>
+      <script src="script.js"></script>
+      <script>
+var express = require('express');
+const jwt = require('jsonwebtoken');
+var router = express.Router();
+var dbConn = require('../../config/db.js');
+
+// view categories
+router.get('/viewCategory', (req, res) => {
+  try {
+    const authToken = req.cookies.authToken;
+
+    if (!authToken) {
+      console.log('JWT token not found in the cookie');
+      return res.status(401).json({ success: false, message: "Error, JWT token not found in the cookie" });
+    }
+
+    console.log('Verifying JWT token');
+    jwt.verify(authToken, 'secrethotdog', (err, decodedToken) => {
+      if (err) {
+        console.log('Error verifying JWT token', err);
+        return res.status(401).json({ success: false, message: "Error, invalid JWT token" });
+      }
+
+    console.log('JWT token verified successfully');
+    const decodedEmail = decodedToken.Info.email;
+
+    const selectCategoriesQuery = 'SELECT * FROM category';
+    dbConn.query(selectCategoriesQuery, decodedEmail, (error, results) => {
+          if (error) {
+              console.log('Error fetching request:', error);
+              return res.status(500).json({ success: false, message: "Error executing SQL query" });
+          }
+          console.log('SQL query executed successfully', results);
+          res.status(200).json(results);
+      });
+  });
+} catch (error) {
+  console.log('Error handling request', error);
+  return res.status(500).json({ success: false, message: "Internal Server Error" });
+}
+});
+
+// add category
+router.post('/addCategory', (req, res) => {
+  try {
+    const authToken = req.cookies.authToken;
+
+    if (!authToken) {
+      console.log('JWT token not found in the cookie');
+      return res.status(401).json({ success: false, message: "Error, JWT token not found in the cookie" });
+    }
+
+    console.log('Verifying JWT token');
+    jwt.verify(authToken, 'secrethotdog', (err, decodedToken) => {
+      if (err) {
+        console.log('Error verifying JWT token', err);
+        return res.status(401).json({ success: false, message: "Error, invalid JWT token" });
+      }
+
+    console.log('JWT token verified successfully');
+    const decodedEmail = decodedToken.Info.email;
+
+    const { categ_name } = req.body;
+    const insertCategoryQuery = 'INSERT INTO category (categ_name) VALUES (?)';
+    dbConn.query(insertCategoryQuery, decodedEmail, (error, results) => {
+          if (error) {
+              console.log('Error adding category:', error);
+              return res.status(500).json({ success: false, message: "Error executing SQL query" });
+          }
+          console.log('SQL query executed successfully', results);
+          res.status(200).json(results);
+      });
+  });
+} catch (error) {
+  console.log('Error handling request', error);
+  return res.status(500).json({ success: false, message: "Internal Server Error" });
+}
+});
+
+// submit recipe
+router.post('/addRecipe', (req, res) => {
+  try {
+    const authToken = req.cookies.authToken;
+
+    if (!authToken) {
+      console.log('JWT token not found in the cookie');
+      return res.status(401).json({ success: false, message: "Error, JWT token not found in the cookie" });
+    }
+
+    console.log('Verifying JWT token');
+    jwt.verify(authToken, 'secrethotdog', (err, decodedToken) => {
+      if (err) {
+        console.log('Error verifying JWT token', err);
+        return res.status(401).json({ success: false, message: "Error, invalid JWT token" });
+      }
+
+      console.log('JWT token verified successfully');
+      const decodedEmail = decodedToken.Info.email;
+
+      const { categ_name, rec_name, rec_desc, preptime, cooktime, servings } = req.body;
+
+      // First, get the categ_id based on categ_name
+      const selectCategIdQuery = 'SELECT categ_id FROM category WHERE categ_name = ?';
+      dbConn.query(selectCategIdQuery, [categ_name], (error, results) => {
+        if (error) {
+          console.log('Error fetching category ID:', error);
+          return res.status(500).json({ success: false, message: "Error executing SQL query" });
+        }
+
+        if (results.length === 0) {
+          return res.status(404).json({ success: false, message: "Category not found" });
+        }
+
+        const categ_id = results[0].categ_id;
+
+        // Now, insert the recipe with the fetched categ_id
+        const insertRecipeQuery = 'INSERT INTO recipes (categ_id, rec_name, rec_desc, preptime, cooktime, servings) VALUES (?, ?, ?, ?, ?, ?)';
+        dbConn.query(insertRecipeQuery, [categ_id, rec_name, rec_desc, preptime, cooktime, servings], (error, results) => {
+          if (error) {
+            console.log('Error submitting recipe:', error);
+            return res.status(500).json({ success: false, message: "Error executing SQL query" });
+          }
+          console.log('SQL query executed successfully', results);
+          res.status(200).json({ success: true, message: "Recipe added successfully" });
+        });
+      });
+    });
+  } catch (error) {
+    console.log('Error handling request', error);
+    return res.status(500).json({ success: false, message: "Internal Server Error" });
+  }
+});
+
+
+// add submitted recipe's ingredients
+router.post('/addIngredients', (req, res) => {
+  try {
+    const authToken = req.cookies.authToken;
+
+    if (!authToken) {
+      console.log('JWT token not found in the cookie');
+      return res.status(401).json({ success: false, message: "Error, JWT token not found in the cookie" });
+    }
+
+    console.log('Verifying JWT token');
+    jwt.verify(authToken, 'secrethotdog', (err, decodedToken) => {
+      if (err) {
+        console.log('Error verifying JWT token', err);
+        return res.status(401).json({ success: false, message: "Error, invalid JWT token" });
+      }
+
+      console.log('JWT token verified successfully');
+      const decodedEmail = decodedToken.Info.email;
+
+      const { rec_name, ingr_name, calories, protein, fat, carbohydrates } = req.body;
+
+      // Fetch recipe_id based on rec_name
+      const selectRecipeIdQuery = 'SELECT recipe_id FROM recipes WHERE rec_name = ?';
+      dbConn.query(selectRecipeIdQuery, [rec_name], (error, results) => {
+        if (error) {
+          console.log('Error fetching recipe_id:', error);
+          return res.status(500).json({ success: false, message: "Error executing SQL query" });
+        }
+
+        if (results.length === 0) {
+          console.log('Recipe not found:', rec_name);
+          return res.status(404).json({ success: false, message: "Recipe not found" });
+        }
+
+        const recipe_id = results[0].recipe_id;
+
+        // Insert ingredients associated with the fetched recipe_id
+        const insertIngredientQuery = 'INSERT INTO ingredients (recipe_id, ingr_name, calories, protein, fat, carbohydrates) VALUES (?, ?, ?, ?, ?, ?)';
+        dbConn.query(insertIngredientQuery, [recipe_id, ingr_name, calories, protein, fat, carbohydrates], (error, results) => {
+          if (error) {
+            console.log('Error inserting ingredients:', error);
+            return res.status(500).json({ success: false, message: "Error executing SQL query" });
+          }
+          console.log('Ingredients inserted successfully', results);
+          res.status(200).json(results);
+        });
+      });
+    });
+  } catch (error) {
+    console.log('Error handling request', error);
+    return res.status(500).json({ success: false, message: "Internal Server Error" });
+  }
+});
+
+// add submitted recipe's procedures
+router.post('/addSteps', (req, res) => {
+  try {
+    const authToken = req.cookies.authToken;
+
+    if (!authToken) {
+      console.log('JWT token not found in the cookie');
+      return res.status(401).json({ success: false, message: "Error, JWT token not found in the cookie" });
+    }
+
+    console.log('Verifying JWT token');
+    jwt.verify(authToken, 'secrethotdog', (err, decodedToken) => {
+      if (err) {
+        console.log('Error verifying JWT token', err);
+        return res.status(401).json({ success: false, message: "Error, invalid JWT token" });
+      }
+
+      console.log('JWT token verified successfully');
+      const decodedEmail = decodedToken.Info.email;
+
+      const { rec_name, step_num, step_desc } = req.body;
+
+      // Fetch recipe_id based on rec_name
+      const selectRecipeIdQuery = 'SELECT recipe_id FROM recipes WHERE rec_name = ?';
+      dbConn.query(selectRecipeIdQuery, [rec_name], (error, results) => {
+        if (error) {
+          console.log('Error fetching recipe_id:', error);
+          return res.status(500).json({ success: false, message: "Error executing SQL query" });
+        }
+
+        if (results.length === 0) {
+          console.log('Recipe not found:', rec_name);
+          return res.status(404).json({ success: false, message: "Recipe not found" });
+        }
+
+        const recipe_id = results[0].recipe_id;
+
+        // Insert procedure steps associated with the fetched recipe_id
+        const insertProcedureQuery = 'INSERT INTO procedure_steps (recipe_id, step_num, step_desc) VALUES (?, ?, ?)';
+        dbConn.query(insertProcedureQuery, [recipe_id, step_num, step_desc], (error, results) => {
+          if (error) {
+            console.log('Error inserting procedure steps:', error);
+            return res.status(500).json({ success: false, message: "Error executing SQL query" });
+          }
+          console.log('Procedure steps inserted successfully', results);
+          res.status(200).json(results);
+        });
+      });
+    });
+  } catch (error) {
+    console.log('Error handling request', error);
+    return res.status(500).json({ success: false, message: "Internal Server Error" });
+  }
+});
+
+
+
+module.exports = router;
+
+    </script>
+        </div>
+    </div>
+
+    <div class="popup-overlay" id="recipePopup">
+      <div class="popup-content">
+          <span class="close-btn" onclick="closePopup()">&times;</span>
+          <div class="recipe-details">
+              <div class="recipe-image">
+                  <img id="popupRecipeImage" alt="Recipe Image">
+              </div>
+              <div class="recipe-description">
+                  <h2 id="popupRecipeTitle"></h2>
+                  <p id="popupRecipeDescription"></p>
+                  <div class="recipe-info">
+                      <h2>Ingredients</h2>
+                      <ul id="popupIngredientsList">
+                          <!-- Ingredients will be dynamically populated here -->
+                      </ul>
+                      <h2>Method</h2>
+                      <ol id="popupMethodSteps">
+                          <!-- Method steps will be dynamically populated here -->
+                      </ol>
+                      <h2>Time to Cook</h2>
+                      <p id="popupTimeToCook"></p>
+                      <h2>Nutritional Value</h2>
+                      <p id="popupNutritionalValue"></p>
+                          <div class="servings">
+                              <span class="servings-title">Adjust Servings: </span>
+                              <button id="minus-btn" class="servings-btn" onclick="decreaseServings()">
+                                  <ion-icon name="remove-circle-outline"></ion-icon>
+                              </button>
+                              <span id="servings-count" class="servings-count">1</span>
+                              <button id="plus-btn" class="servings-btn" onclick="increaseServings()">
+                                  <ion-icon name="add-circle-outline"></ion-icon>
+                              </button>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+
+    <script src="script.js"></script>
+    <script>
+        function searchRecipe(event) {
+            event.preventDefault(); // Prevent the form from submitting
+            const searchQuery = document.getElementById('searchQuery').value.toLowerCase();
+            const recipeCards = document.querySelectorAll('.recipe-card');
+            
+            recipeCards.forEach(card => {
+                const title = card.querySelector('.recipe-title').textContent.toLowerCase();
+                const description = card.querySelector('.recipe-description').textContent.toLowerCase();
+                
+                if (title.includes(searchQuery) || description.includes(searchQuery)) {
+                    card.style.display = 'block'; // Show the card if it matches the search query
+                } else {
+                    card.style.display = 'none'; // Hide the card if it doesn't match the search query
+                }
+            });
+        }
+
+        // Function to show recipe details popup
+        function showRecipeDetails(recipeTitle) {
+            const recipeData = getRecipeData(recipeTitle);
+            const popup = document.getElementById('recipePopup');
+            const popupRecipeImage = document.getElementById('popupRecipeImage');
+            const popupRecipeTitle = document.getElementById('popupRecipeTitle');
+            const popupRecipeDescription = document.getElementById('popupRecipeDescription');
+            const popupIngredientsList = document.getElementById('popupIngredientsList');
+            const popupMethodSteps = document.getElementById('popupMethodSteps');
+            const popupTimeToCook = document.getElementById('popupTimeToCook');
+            const popupNutritionalValue = document.getElementById('popupNutritionalValue');
+
+            // Set popup content
+            let imagePath = ''; // Variable to store the image path
+
+            // Determine the image path based on recipeTitle
+            if (recipeTitle === 'Kare-Kare') {
+                imagePath = 'pics/karekare.jpg';
+            } else if (recipeTitle === 'Lumpiang Shanghai') {
+                imagePath = 'pics/lumpia.jpg';
+            } else {
+                imagePath = `pics/${recipeTitle.toLowerCase().replace(' ', '-')}.jpg`;
+            }
+
+            
+            popupRecipeTitle.textContent = recipeData.title;
+            popupRecipeDescription.textContent = recipeData.description;
+            popupIngredientsList.innerHTML = '';
+            recipeData.ingredients.forEach(ingredient => {
+                const li = document.createElement('li');
+                li.textContent = ingredient;
+                popupIngredientsList.appendChild(li);
+            });
+            popupMethodSteps.innerHTML = '';
+            recipeData.method.forEach(step => {
+                const li = document.createElement('li');
+                li.textContent = step;
+                popupMethodSteps.appendChild(li);
+            });
+            popupTimeToCook.textContent = `Time to cook: ${recipeData.timeToCook}`;
+            popupNutritionalValue.textContent = recipeData.nutritionalValue;
+
+            // Show the popup
+            popup.style.display = 'flex';
+        }
+
+        // Function to close the recipe popup
+        function closePopup() {
+            const popup = document.getElementById('recipePopup');
+            popup.style.display = 'none';
+        }
+
+        // Function to show add recipe form popup
+        function showAddRecipeForm() {
+            const addRecipeFormPopup = document.getElementById('addRecipeFormPopup');
+            addRecipeFormPopup.style.display = 'block';
+        }
+
+        // Function to close add recipe form popup
+        function closeAddRecipeForm() {
+            const addRecipeFormPopup = document.getElementById('addRecipeFormPopup');
+            addRecipeFormPopup.style.display = 'none';
+        }
+
+        // Function to handle adding a new recipe
+        function submitRecipe(event) {
+            event.preventDefault(); // Prevent the form from submitting
+            // Add your logic to handle adding a new recipe here
+            alert("Functionality to add a new recipe will be implemented here.");
+        }
+
+      </script>
+    <script
+      type="module"
+      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"
+    ></script>
+    <script
+      nomodule
+      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"
+    ></script>
+    <div>
+
+  
+</body>
+</html>
